@@ -10,11 +10,11 @@ class PIDController:
         self.ki_ = float(ki)
         self.kd_ = float(kd)
         self.max_windup_ = float(max_windup)
+	self.alpha = 0.2
 
         # Store relevant data
         self.last_timestamp_ = 0.0
         self.target_ = 0.0
-        #self.start_time_ = start_time
         self.error_sum_ = 0.0
         self.last_error_ = 0.0
 
@@ -59,11 +59,11 @@ class PIDController:
         # Sum the errors
         self.error_sum_ += error * delta_time
 
-        # Update the past error
-        self.last_error_ = error
-
         # Find delta_error
         delta_error = error - self.last_error_
+
+        # Update the past error
+        self.last_error_ = error
 
         # Address max windup
         ########################################
@@ -81,8 +81,8 @@ class PIDController:
         i = self.ki_ * self.error_sum_
 
         # derivative error
-        d = self.kd_ * delta_error
-
+	d = self.kd_ * (self.alpha * delta_error / delta_time + (1 - self.alpha)  * self.last_error_)
+        
         # Set the control effort
         u = p + i + d
 
