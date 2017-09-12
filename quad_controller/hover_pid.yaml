@@ -1,0 +1,25 @@
+!!python/object/new:dynamic_reconfigure.encoding.Config
+dictitems:
+  groups: !!python/object/new:dynamic_reconfigure.encoding.Config
+    dictitems:
+      groups: !!python/object/new:dynamic_reconfigure.encoding.Config
+        state: []
+      id: 0
+      kd: 2.0
+      ki: 0.2
+      ki_max: 100.0
+      kp: 0.5
+      name: Default
+      parameters: !!python/object/new:dynamic_reconfigure.encoding.Config
+        state: []
+      parent: 0
+      state: true
+      target: 100.0
+      type: ''
+    state: []
+  kd: 2.0
+  ki: 0.2
+  ki_max: 100.0
+  kp: 0.5
+  target: 100.0
+state: []
